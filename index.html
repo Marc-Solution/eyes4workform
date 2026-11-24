@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eyes4work – Intresseanmälan Rusta och Matcha</title>
+  <meta name="description" content="Söker du jobb? Låt Eyes4works karriärcoacher hjälpa dig via Rusta och Matcha." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #e04f3e;
+      --accent-dark: #d9483b;
+      --accent-soft: rgba(224, 79, 62, 0.12);
+      --bg: #f7f6f4;
+      --surface: #ffffff;
+      --ink: #111111;
+      --muted: #5c5c5c;
+      --border: #e4e2de;
+      --focus: #e04f3e;
+      --footer: #000000;
+      --radius: 12px;
+      --shadow: 0 12px 40px rgba(17, 17, 17, 0.08);
+      --form-max: 560px;
+      --font: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    .brand .four {
+      color: var(--accent);
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: clamp(340px, 58vw, 460px);
+      color: #fff;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(160deg, rgba(17, 17, 17, 0.72) 0%, rgba(17, 17, 17, 0.45) 45%, rgba(17, 17, 17, 0.78) 100%),
+        url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80") center / cover no-repeat;
+      transform: scale(1.02);
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+
+    .hero__glow {
+      position: absolute;
+      inset: auto -20% -30% auto;
+      width: 70%;
+      height: 70%;
+      z-index: -1;
+      background: radial-gradient(circle, rgba(224, 79, 62, 0.35), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      max-width: var(--form-max);
+      margin: 0 auto;
+      padding: 2rem 1.25rem 2.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: inherit;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero__brand {
+      font-size: clamp(1.75rem, 6vw, 2.35rem);
+      margin: 0 0 1rem;
+      color: #fff;
+    }
+
+    .hero__brand .four {
+      color: var(--accent);
+    }
+
+    .hero h1 {
+      margin: 0 0 0.85rem;
+      letter-spacing: -0.02em;
+      max-width: 16ch;
+    }
+
+    .hero__title-main {
+      display: block;
+      font-size: clamp(1.85rem, 7vw, 2.55rem);
+      line-height: 1.12;
+      font-weight: 800;
+    }
+
+    .hero__title-sub {
+      display: block;
+      margin-top: 0.45rem;
+      font-size: clamp(1.15rem, 4.4vw, 1.45rem);
+      line-height: 1.3;
+      font-weight: 600;
+      max-width: 18ch;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 36ch;
+    }
+
+    .hero__cta-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.35rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #fff;
+      opacity: 0.9;
+    }
+
+    .hero__cta-hint span {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      display: grid;
+      place-items: center;
+      animation: bounce 1.8s ease-in-out infinite;
+    }
+
+    /* —— Form section —— */
+    .form-section {
+      padding: 1.75rem 1.25rem 3rem;
+    }
+
+    .form-shell {
+      max-width: var(--form-max);
+      margin: 0 auto;
+      background: var(--surface);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      padding: 1.5rem 1.25rem 1.75rem;
+      animation: fadeUp 0.75s ease 0.1s both;
+    }
+
+    .form-shell h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .form-shell > .lead {
+      margin: 0 0 1.5rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .required-note {
+      margin: 0 0 1.25rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .field {
+      margin-bottom: 1.15rem;
+    }
+
+    label.field-label,
+    .field-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .req {
+      color: var(--accent);
+    }
+
+    .hint {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      min-height: 52px;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: #fbfbfa;
+      font: inherit;
+      font-size: 1rem;
+      color: var(--ink);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235c5c5c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.75rem;
+    }
+
+    input:hover,
+    select:hover {
+      border-color: #cfcbc4;
+    }
+
+    input:focus,
+    select:focus,
+    .radio-group:focus-within,
+    .checkbox:focus-within {
+      outline: none;
+      border-color: var(--focus);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+      background: #fff;
+    }
+
+    input.is-invalid,
+    select.is-invalid {
+      border-color: var(--accent-dark);
+      box-shadow: 0 0 0 3px rgba(217, 72, 59, 0.15);
+    }
+
+    .error-text {
+      display: none;
+      margin-top: 0.35rem;
+      font-size: 0.8rem;
+      color: var(--accent-dark);
+      font-weight: 500;
+    }
+
+    .field.has-error .error-text {
+      display: block;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .radio-option {
+      flex: 1 1 120px;
+      position: relative;
+    }
+
+    .radio-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .radio-option label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: #fbfbfa;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      text-align: center;
+    }
+
+    .radio-option input:checked + label {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+
+    .radio-option input:focus-visible + label {
+      box-shadow: 0 0 0 3px var(--accent-soft);
+      border-color: var(--focus);
+    }
+
+    .checkbox-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin: 1.5rem 0 1.25rem;
+    }
+
+    .checkbox {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 0.75rem;
+      align-items: start;
+      padding: 0.9rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: #fbfbfa;
+    }
+
+    .checkbox input {
+      width: 22px;
+      height: 22px;
+      margin-top: 0.15rem;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .checkbox label {
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      min-height: 56px;
+      border: none;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 10px 24px rgba(224, 79, 62, 0.28);
+    }
+
+    .submit-btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px var(--accent-soft), 0 10px 24px rgba(224, 79, 62, 0.28);
+    }
+
+    /* —— Success / demo —— */
+    .success-panel,
+    .demo-panel {
+      display: none;
+    }
+
+    .success-panel.is-visible,
+    .demo-panel.is-visible {
+      display: block;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .form-shell.is-submitted #interest-form,
+    .form-shell.is-submitted .form-intro {
+      display: none;
+    }
+
+    .success-card {
+      text-align: center;
+      padding: 1.25rem 0.5rem 0.5rem;
+    }
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+    }
+
+    .success-card h2 {
+      margin: 0 0 0.65rem;
+      font-size: 1.4rem;
+    }
+
+    .success-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .demo-panel {
+      margin-top: 1.75rem;
+      padding: 1rem;
+      border: 1px dashed #c9c5bd;
+      border-radius: var(--radius);
+      background: #faf9f7;
+    }
+
+    .demo-panel h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .demo-panel .demo-note {
+      margin: 0 0 0.85rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .demo-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .demo-table th,
+    .demo-table td {
+      text-align: left;
+      vertical-align: top;
+      padding: 0.45rem 0.35rem;
+      border-bottom: 1px solid #ebe8e2;
+    }
+
+    .demo-table th {
+      width: 42%;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .demo-json {
+      margin: 0 0 1rem;
+      padding: 0.85rem;
+      border-radius: 8px;
+      background: #111;
+      color: #e8e8e8;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      line-height: 1.45;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .reset-btn {
+      width: 100%;
+      min-height: 46px;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .reset-btn:hover {
+      border-color: #bbb;
+      background: #f5f5f5;
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      background: var(--footer);
+      color: #fff;
+      padding: 2.5rem 1.25rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      margin-bottom: 1.75rem;
+    }
+
+    .footer-brand .brand {
+      font-size: 1.5rem;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 0.45rem;
+    }
+
+    .footer-brand p {
+      margin: 0 0 0.75rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+    }
+
+    .tranpenad-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #fff;
+    }
+
+    .tranpenad-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem 1.5rem;
+      margin: 0;
+      padding: 0 0 1.75rem;
+      list-style: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-copy {
+      margin: 1.25rem 0 0;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    @media (min-width: 640px) {
+      .form-shell {
+        padding: 2rem 1.75rem 2rem;
+      }
+
+      .footer-links {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.02); }
+      to { transform: scale(1.08); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" aria-label="Eyes4work">
+    <div class="hero__media" role="img" aria-label="Karriärcoaching och jobbsökande"></div>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <p class="hero__brand brand">Eyes<span class="four">4</span>work</p>
+      <h1>
+        <span class="hero__title-main">Svårt att hitta jobb?</span>
+        <span class="hero__title-sub">Låt våra karriärcoacher hjälpa dig.</span>
+      </h1>
+      <p>
+        Välkommen! Genom Rusta och Matcha stöttar vi dig som arbetssökande hela vägen till jobb eller utbildning – med egen coach, konkret plan och nära stöd.
+      </p>
+      <div class="hero__cta-hint" aria-hidden="true">
+        <span>↓</span>
+        Fyll i intresseanmälan
+      </div>
+    </div>
+  </header>
+
+  <main class="form-section">
+    <div class="form-shell" id="form-shell">
+      <div class="form-intro">
+        <h2>Intresseanmälan</h2>
+        <p class="lead">Berätta kort om dig – en karriärcoach hör av sig så snart som möjligt.</p>
+        <p class="required-note">Fält markerade med <span class="req">*</span> är obligatoriska.</p>
+      </div>
+
+      <form id="interest-form" novalidate>
+        <div class="field" data-field="fornamn">
+          <label class="field-label" for="fornamn">Förnamn <span class="req">*</span></label>
+          <input type="text" id="fornamn" name="fornamn" autocomplete="given-name" required />
+          <span class="error-text">Ange ditt förnamn.</span>
+        </div>
+
+        <div class="field" data-field="efternamn">
+          <label class="field-label" for="efternamn">Efternamn <span class="req">*</span></label>
+          <input type="text" id="efternamn" name="efternamn" autocomplete="family-name" required />
+          <span class="error-text">Ange ditt efternamn.</span>
+        </div>
+
+        <div class="field" data-field="fodelsear">
+          <label class="field-label" for="fodelsear">Födelseår <span class="req">*</span></label>
+          <select id="fodelsear" name="fodelsear" required>
+            <option value="">Välj</option>
+          </select>
+          <span class="error-text">Välj ditt födelseår.</span>
+        </div>
+
+        <div class="field" data-field="email">
+          <label class="field-label" for="email">Mejladress <span class="req">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required />
+          <span class="error-text">Ange en giltig mejladress.</span>
+        </div>
+
+        <div class="field" data-field="telefon">
+          <label class="field-label" for="telefon">Telefonnummer <span class="req">*</span></label>
+          <input type="tel" id="telefon" name="telefon" autocomplete="tel" inputmode="tel" required />
+          <span class="error-text">Ange ditt telefonnummer.</span>
+        </div>
+
+        <fieldset class="field" data-field="af_inskriven" style="border:0;padding:0;margin:0 0 1.15rem;">
+          <legend class="field-label">Är du inskriven på Arbetsförmedlingen? <span class="req">*</span></legend>
+          <div class="radio-group" role="radiogroup" aria-required="true">
+            <div class="radio-option">
+              <input type="radio" id="af_ja" name="af_inskriven" value="Ja" required />
+              <label for="af_ja">Ja</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="af_nej" name="af_inskriven" value="Nej" />
+              <label for="af_nej">Nej</label>
+            </div>
+          </div>
+          <span class="error-text">Välj ett alternativ.</span>
+        </fieldset>
+
+        <div class="field" data-field="bostadsort">
+          <label class="field-label" for="bostadsort">Bostadsort <span class="req">*</span></label>
+          <select id="bostadsort" name="bostadsort" required>
+            <option value="">Välj kommun</option>
+          </select>
+          <span class="error-text">Välj din bostadsort.</span>
+        </div>
+
+        <div class="field" data-field="postnummer">
+          <label class="field-label" for="postnummer">Postnummer</label>
+          <input
+            type="text"
+            id="postnummer"
+            name="postnummer"
+            inputmode="numeric"
+            pattern="[0-9]{5}"
+            maxlength="5"
+            autocomplete="postal-code"
+            placeholder="11351"
+          />
+          <span class="hint">Endast postnummer, 5 siffror, till exempel 11351</span>
+          <span class="error-text">Ange 5 siffror eller lämna fältet tomt.</span>
+        </div>
+
+        <fieldset class="field" data-field="ratt_till_rom" style="border:0;padding:0;margin:0 0 1.15rem;">
+          <legend class="field-label">Har du rätt till Rusta och matcha? <span class="req">*</span></legend>
+          <div class="radio-group" role="radiogroup" aria-required="true">
+            <div class="radio-option">
+              <input type="radio" id="rom_ja" name="ratt_till_rom" value="Ja" required />
+              <label for="rom_ja">Ja</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="rom_nej" name="ratt_till_rom" value="Nej" />
+              <label for="rom_nej">Nej</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="rom_vet" name="ratt_till_rom" value="Vet inte" />
+              <label for="rom_vet">Vet inte</label>
+            </div>
+          </div>
+          <span class="error-text">Välj ett alternativ.</span>
+        </fieldset>
+
+        <div class="field" data-field="sysselsattning">
+          <label class="field-label" for="sysselsattning">Jobbar eller studerar du för tillfället? <span class="req">*</span></label>
+          <select id="sysselsattning" name="sysselsattning" required>
+            <option value="">Välj</option>
+            <option value="Arbetssökande">Arbetssökande</option>
+            <option value="Studerande">Studerande</option>
+            <option value="Jobbar deltid">Jobbar deltid</option>
+            <option value="Jobbar heltid">Jobbar heltid</option>
+            <option value="Föräldraledig / Sjukskriven">Föräldraledig / Sjukskriven</option>
+            <option value="Annat">Annat</option>
+          </select>
+          <span class="error-text">Välj ett alternativ.</span>
+        </div>
+
+        <div class="field" data-field="utbildning">
+          <label class="field-label" for="utbildning">Vad är din högsta utbildningsnivå? <span class="req">*</span></label>
+          <select id="utbildning" name="utbildning" required>
+            <option value="">Välj</option>
+            <option value="Grundskola">Grundskola</option>
+            <option value="Gymnasium">Gymnasium</option>
+            <option value="Yrkeshögskola">Yrkeshögskola</option>
+            <option value="Högskola / Universitet">Högskola / Universitet</option>
+            <option value="Folkhögskola">Folkhögskola</option>
+            <option value="Annat">Annat</option>
+          </select>
+          <span class="error-text">Välj din utbildningsnivå.</span>
+        </div>
+
+        <fieldset class="field" data-field="ring_mig" style="border:0;padding:0;margin:0 0 1.15rem;">
+          <legend class="field-label">Vill du att vi ringer till dig? <span class="req">*</span></legend>
+          <div class="radio-group" role="radiogroup" aria-required="true">
+            <div class="radio-option">
+              <input type="radio" id="ring_ja" name="ring_mig" value="Ja" required />
+              <label for="ring_ja">Ja</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="ring_nej" name="ring_mig" value="Nej" />
+              <label for="ring_nej">Nej</label>
+            </div>
+          </div>
+          <span class="error-text">Välj ett alternativ.</span>
+        </fieldset>
+
+        <div class="checkbox-stack">
+          <div class="checkbox field" data-field="samtycke_tjanst">
+            <input type="checkbox" id="samtycke_tjanst" name="samtycke_tjanst" required />
+            <label for="samtycke_tjanst">
+              Jag är införstådd med att Eyes4Work är leverantör av Rusta och Matcha och att deltagande i tjänsten innebär ingen garanti om jobb eller utbildningsplats. För att kunna ta del av tjänsten behöver man vara inskriven på Arbetsförmedlingen och ha rätt till Rusta och Matcha.
+              <span class="req">*</span>
+            </label>
+            <span class="error-text" style="grid-column: 2;">Du behöver godkänna detta för att skicka in.</span>
+          </div>
+
+          <div class="checkbox field" data-field="samtycke_gdpr">
+            <input type="checkbox" id="samtycke_gdpr" name="samtycke_gdpr" required />
+            <label for="samtycke_gdpr">
+              Jag har läst integritetspolicyn och godkänner att Eyes4Work sparar mina personuppgifter för att hantera min intresseanmälan och kontakta mig via telefon eller e-post.
+              <span class="req">*</span>
+            </label>
+            <span class="error-text" style="grid-column: 2;">Du behöver godkänna integritetspolicyn.</span>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Ring mig</button>
+      </form>
+
+      <div class="success-panel" id="success-panel" role="status" aria-live="polite">
+        <div class="success-card">
+          <div class="success-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h2>Tack för din intresseanmälan!</h2>
+          <p>En av våra karriärcoacher kontaktar dig så snart som möjligt.</p>
+        </div>
+      </div>
+
+      <div class="demo-panel" id="demo-panel">
+        <h3>Demo-data (endast för intern presentation)</h3>
+        <p class="demo-note">Inskickad data visas här för prototypen – ingen data skickas till en server.</p>
+        <table class="demo-table" id="demo-table">
+          <tbody></tbody>
+        </table>
+        <pre class="demo-json" id="demo-json"></pre>
+        <button type="button" class="reset-btn" id="reset-btn">Återställ och testa igen</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand">Eyes<span class="four">4</span>work</span>
+        <p>En del av Tranpenad Group</p>
+        <span class="tranpenad-badge">Tranpenad</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#rusta-matcha">Rusta &amp; Matcha</a></li>
+        <li><a href="#kontor">Våra kontor</a></li>
+        <li><a href="#faq">Vanliga frågor</a></li>
+        <li><a href="#gdpr">GDPR</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <p class="footer-copy">© Eyes4work – prototyp för intern presentation</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const yearSelect = document.getElementById("fodelsear");
+      for (let y = 2008; y >= 1955; y--) {
+        const opt = document.createElement("option");
+        opt.value = String(y);
+        opt.textContent = String(y);
+        yearSelect.appendChild(opt);
+      }
+
+      const featuredCities = ["Stockholm", "Göteborg", "Malmö"];
+      const municipalities = [
+        "Ale", "Alingsås", "Alvesta", "Aneby", "Arboga", "Arjeplog", "Arvidsjaur", "Arvika", "Askersund", "Avesta",
+        "Bengtsfors", "Berg", "Bjurholm", "Bjuv", "Boden", "Bollebygd", "Bollnäs", "Borgholm", "Borlänge", "Borås",
+        "Botkyrka", "Boxholm", "Bromölla", "Bräcke", "Burlöv", "Båstad",
+        "Dals-Ed", "Danderyd", "Degerfors", "Dorotea",
+        "Eda", "Ekerö", "Eksjö", "Emmaboda", "Enköping", "Eskilstuna", "Eslöv", "Essunga",
+        "Fagersta", "Falkenberg", "Falköping", "Falun", "Filipstad", "Finspång", "Flen", "Forshaga", "Färgelanda",
+        "Gagnef", "Gislaved", "Gnesta", "Gnosjö", "Gotland", "Grums", "Grästorp", "Gullspång", "Gällivare", "Gävle",
+        "Göteborg", "Götene",
+        "Habo", "Hagfors", "Hallsberg", "Hallstahammar", "Halmstad", "Hammarö", "Haninge", "Haparanda", "Heby",
+        "Hedemora", "Helsingborg", "Herrljunga", "Hjo", "Hofors", "Huddinge", "Hudiksvall", "Hultsfred", "Hylte",
+        "Håbo", "Hällefors", "Härjedalen", "Härnösand", "Härryda", "Hässleholm", "Höganäs", "Högsby", "Hörby", "Höör",
+        "Jokkmokk", "Järfälla", "Jönköping",
+        "Kalix", "Kalmar", "Karlsborg", "Karlshamn", "Karlskoga", "Karlskrona", "Karlstad", "Katrineholm", "Kil",
+        "Kinda", "Kiruna", "Klippan", "Knivsta", "Kramfors", "Kristianstad", "Kristinehamn", "Krokom", "Kumla",
+        "Kungsbacka", "Kungsör", "Kungälv", "Kävlinge", "Köping",
+        "Laholm", "Landskrona", "Laxå", "Lekeberg", "Leksand", "Lerum", "Lessebo", "Lidingö", "Lidköping",
+        "Lilla Edet", "Lindesberg", "Linköping", "Ljungby", "Ljusdal", "Ljusnarsberg", "Lomma", "Ludvika", "Luleå",
+        "Lund", "Lycksele", "Lysekil",
+        "Malmö", "Malung-Sälen", "Malå", "Mariestad", "Mark", "Markaryd", "Mellerud", "Mjölby", "Mora", "Motala",
+        "Mullsjö", "Munkedal", "Munkfors", "Mölndal", "Mönsterås", "Mörbylånga",
+        "Nacka", "Nora", "Norberg", "Nordanstig", "Nordmaling", "Norrköping", "Norrtälje", "Norsjö", "Nybro",
+        "Nykvarn", "Nyköping", "Nynäshamn", "Nässjö",
+        "Ockelbo", "Olofström", "Orsa", "Orust", "Osby", "Oskarshamn", "Ovanåker", "Oxelösund",
+        "Pajala", "Partille", "Perstorp", "Piteå",
+        "Ragunda", "Robertsfors", "Ronneby", "Rättvik",
+        "Sala", "Salem", "Sandviken", "Sigtuna", "Simrishamn", "Sjöbo", "Skara", "Skellefteå", "Skinnskatteberg",
+        "Skurup", "Skövde", "Smedjebacken", "Sollefteå", "Sollentuna", "Solna", "Sorsele", "Sotenäs", "Staffanstorp",
+        "Stenungsund", "Stockholm", "Storfors", "Storuman", "Strängnäs", "Strömstad", "Strömsund", "Sundbyberg",
+        "Sundsvall", "Sunne", "Surahammar", "Svalöv", "Svedala", "Svenljunga", "Säffle", "Säter", "Sävsjö",
+        "Söderhamn", "Söderköping", "Södertälje", "Sölvesborg",
+        "Tanum", "Tibro", "Tidaholm", "Tierp", "Timrå", "Tingsryd", "Tjörn", "Tomelilla", "Torsby", "Torsås",
+        "Tranemo", "Tranås", "Trelleborg", "Trollhättan", "Trosa", "Tyresö", "Täby", "Töreboda",
+        "Uddevalla", "Ulricehamn", "Umeå", "Upplands Väsby", "Upplands-Bro", "Uppsala", "Uppvidinge",
+        "Vadstena", "Vaggeryd", "Valdemarsvik", "Vallentuna", "Vansbro", "Vara", "Varberg", "Vaxholm", "Vellinge",
+        "Vetlanda", "Vilhelmina", "Vimmerby", "Vindeln", "Vingåker", "Vårgårda", "Vänersborg", "Vännäs", "Värmdö",
+        "Värnamo", "Västervik", "Västerås", "Växjö",
+        "Ydre", "Ystad",
+        "Åmål", "Ånge", "Åre", "Årjäng", "Åsele", "Åstorp", "Åtvidaberg",
+        "Älmhult", "Älvdalen", "Älvkarleby", "Älvsbyn", "Ängelholm",
+        "Öckerö", "Ödeshög", "Örebro", "Örkelljunga", "Örnsköldsvik", "Östersund", "Österåker", "Östhammar",
+        "Östra Göinge", "Överkalix", "Övertorneå"
+      ];
+
+      const citySelect = document.getElementById("bostadsort");
+      const featuredGroup = document.createElement("optgroup");
+      featuredGroup.label = "Större städer";
+      featuredCities.forEach((city) => {
+        const opt = document.createElement("option");
+        opt.value = city;
+        opt.textContent = city;
+        featuredGroup.appendChild(opt);
+      });
+      citySelect.appendChild(featuredGroup);
+
+      const allGroup = document.createElement("optgroup");
+      allGroup.label = "Alla kommuner";
+      municipalities.forEach((city) => {
+        const opt = document.createElement("option");
+        opt.value = city;
+        opt.textContent = city;
+        allGroup.appendChild(opt);
+      });
+      citySelect.appendChild(allGroup);
+
+      const form = document.getElementById("interest-form");
+      const shell = document.getElementById("form-shell");
+      const successPanel = document.getElementById("success-panel");
+      const demoPanel = document.getElementById("demo-panel");
+      const demoTableBody = document.querySelector("#demo-table tbody");
+      const demoJson = document.getElementById("demo-json");
+      const resetBtn = document.getElementById("reset-btn");
+      const postnummer = document.getElementById("postnummer");
+
+      postnummer.addEventListener("input", () => {
+        postnummer.value = postnummer.value.replace(/\D/g, "").slice(0, 5);
+      });
+
+      const labels = {
+        fornamn: "Förnamn",
+        efternamn: "Efternamn",
+        fodelsear: "Födelseår",
+        email: "Mejladress",
+        telefon: "Telefonnummer",
+        af_inskriven: "Inskriven på Arbetsförmedlingen",
+        bostadsort: "Bostadsort",
+        postnummer: "Postnummer",
+        ratt_till_rom: "Rätt till Rusta och matcha",
+        sysselsattning: "Sysselsättning",
+        utbildning: "Högsta utbildningsnivå",
+        ring_mig: "Vill bli uppringd",
+        samtycke_tjanst: "Samtycke tjänst",
+        samtycke_gdpr: "Samtycke GDPR"
+      };
+
+      function clearErrors() {
+        form.querySelectorAll(".field.has-error").forEach((el) => el.classList.remove("has-error"));
+        form.querySelectorAll(".is-invalid").forEach((el) => el.classList.remove("is-invalid"));
+      }
+
+      function markError(name) {
+        const field = form.querySelector('[data-field="' + name + '"]');
+        if (!field) return;
+        field.classList.add("has-error");
+        const control = field.querySelector("input:not([type='radio']):not([type='checkbox']), select");
+        if (control) control.classList.add("is-invalid");
+      }
+
+      function validate() {
+        clearErrors();
+        let ok = true;
+        const requiredText = ["fornamn", "efternamn", "email", "telefon"];
+        const requiredSelect = ["fodelsear", "bostadsort", "sysselsattning", "utbildning"];
+        const requiredRadio = ["af_inskriven", "ratt_till_rom", "ring_mig"];
+
+        requiredText.forEach((name) => {
+          const el = form.elements[name];
+          if (!el.value.trim()) {
+            markError(name);
+            ok = false;
+          }
+        });
+
+        const email = form.elements.email;
+        if (email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+          markError("email");
+          ok = false;
+        }
+
+        requiredSelect.forEach((name) => {
+          if (!form.elements[name].value) {
+            markError(name);
+            ok = false;
+          }
+        });
+
+        requiredRadio.forEach((name) => {
+          if (![...form.elements[name]].some((r) => r.checked)) {
+            markError(name);
+            ok = false;
+          }
+        });
+
+        const pn = postnummer.value.trim();
+        if (pn && !/^\d{5}$/.test(pn)) {
+          markError("postnummer");
+          ok = false;
+        }
+
+        if (!form.elements.samtycke_tjanst.checked) {
+          markError("samtycke_tjanst");
+          ok = false;
+        }
+        if (!form.elements.samtycke_gdpr.checked) {
+          markError("samtycke_gdpr");
+          ok = false;
+        }
+
+        return ok;
+      }
+
+      function collectData() {
+        const data = {};
+        Object.keys(labels).forEach((key) => {
+          const el = form.elements[key];
+          if (!el) return;
+          if (el.type === "checkbox") {
+            data[key] = el.checked;
+          } else if (el.length && el[0] && el[0].type === "radio") {
+            const checked = [...el].find((r) => r.checked);
+            data[key] = checked ? checked.value : "";
+          } else {
+            data[key] = el.value.trim();
+          }
+        });
+        return data;
+      }
+
+      function showDemo(data) {
+        demoTableBody.innerHTML = "";
+        Object.keys(labels).forEach((key) => {
+          const tr = document.createElement("tr");
+          const th = document.createElement("th");
+          const td = document.createElement("td");
+          th.textContent = labels[key];
+          let value = data[key];
+          if (typeof value === "boolean") value = value ? "Ja" : "Nej";
+          if (value === "") value = "—";
+          td.textContent = value;
+          tr.appendChild(th);
+          tr.appendChild(td);
+          demoTableBody.appendChild(tr);
+        });
+        demoJson.textContent = JSON.stringify(data, null, 2);
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!validate()) {
+          const firstError = form.querySelector(".field.has-error");
+          if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+
+        const data = collectData();
+        showDemo(data);
+        shell.classList.add("is-submitted");
+        successPanel.classList.add("is-visible");
+        demoPanel.classList.add("is-visible");
+        successPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      resetBtn.addEventListener("click", function () {
+        form.reset();
+        clearErrors();
+        shell.classList.remove("is-submitted");
+        successPanel.classList.remove("is-visible");
+        demoPanel.classList.remove("is-visible");
+        demoTableBody.innerHTML = "";
+        demoJson.textContent = "";
+        form.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      form.addEventListener("input", function (e) {
+        const field = e.target.closest(".field");
+        if (field) {
+          field.classList.remove("has-error");
+          e.target.classList.remove("is-invalid");
+        }
+      });
+
+      form.addEventListener("change", function (e) {
+        const field = e.target.closest(".field");
+        if (field) field.classList.remove("has-error");
+      });
+    })();
+  </script>
+</body>
+</html>
